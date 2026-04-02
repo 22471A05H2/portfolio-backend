@@ -3,6 +3,7 @@ const cors = require("cors");
 
 const app = express();
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 
@@ -13,12 +14,13 @@ app.get("/", (req, res) => {
 
 // Contact route
 app.post("/contact", (req, res) => {
-  res.send("Contact working");
+  res.json({ message: "Contact working ✅" });
 });
 
-const PORT = process.env.PORT || 5000;
+// IMPORTANT: Railway port fix
+const PORT = process.env.PORT || 8080;
 
-// IMPORTANT FIX
+// Start server
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server running on port ${PORT}`);
 });
